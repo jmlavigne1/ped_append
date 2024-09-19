@@ -50,8 +50,9 @@ sample <-sample(c(TRUE, FALSE), nrow(wbc_clean),replace =T, prob= c(0.6, 0.4))
 train <- wbc_clean[sample, ]
 test <- wbc_clean[!sample, ]
 
+#build the linear model
 
-
+model <- lm(Neutrophil_Percentage ~ WBC_Count, data=train)
 
 
 
