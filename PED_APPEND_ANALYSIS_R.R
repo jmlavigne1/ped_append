@@ -28,3 +28,11 @@ str(append)
 
 WBC_dist <- append%>%ggplot(aes(WBC_Count)) + geom_bar()
 WBC_dist
+
+
+#check for outliers in the WBC distribution
+
+plot <- append%>%ggplot(aes(WBC_Count, WBC_Count)) + geom_boxplot()
+plot
+
+
