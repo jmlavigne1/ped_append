@@ -72,3 +72,5 @@ sn_3 = pd.merge(sn_1, sn_2, on = "Segmented_Neutrophils", how = "left")
 sn_3 = sn_3.drop_duplicates()
 print(sn_3.info)
 
+#I should only have 53 columns total
+
