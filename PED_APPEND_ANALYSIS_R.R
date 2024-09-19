@@ -61,4 +61,20 @@ sigma(model)
 #these are two modes of generating the RSE
 
 
+#calculating the r^2 statistic represents the proportion of variance explained. 
+summary(model)$r.squared
+#our r^2 value is 0.4626656.This suggests taht we have 46% variability in the total wbc count value.
+
+
+#to quantify in comparison the model fit to other models, I will build a second model
+
+model_2 <- lm(Neutrophil_Percentage ~ RBC_Count, data=train)
+model_2
+
+r_sq_2 <- summary(model_2)$r.squared
+r_sq_2
+r_sq <- summary(model)$r.squared
+r_sq
+
+
 
