@@ -52,7 +52,7 @@ line_fitter = LinearRegression()
 
 line_fitter.fit(sn, wbc)
 
-# the line fitter model will not work because there missing data, therefore, I will need to clean the data.
+# the line fitter model will not work with the previously assigned arrays sn and wbc because there missing data, therefore, I will need to clean the data.
 # cleaning the data
 print(ped_append.dtypes)
 print(ped_append["Segmented_Neutrophils"].isna().sum())
@@ -80,5 +80,17 @@ print(sn_3.info)
 
 sn_3 = sn_3.dropna(subset=["Segmented_Neutrophils"]).drop_duplicates()
 print(sn_3.info)
+
+#I will separate our the columns now
+
+sn_4 = sn_3["Segmented_Neutrophils"]
+print(sn_4.info)
+
+wbc_1 = sn_3["WBC_Count"]
+print(wbc_1.info)
+
+
+
+line_fitter.fit(sn_4, wbc_1)
 
 
