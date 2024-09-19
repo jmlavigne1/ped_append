@@ -62,11 +62,13 @@ print(ped_append.count())
 # remove the missing data from the segmented neutrophil column to make a new dataframe
 
 sn_1 = ped_append.dropna(subset=['Segmented_Neutrophils'])
+print(sn_1.info)
 sn_2 = ped_append.dropna(subset=['WBC_Count'])
-
+print(sn_2.info)
 #take the subset of sn_1 and sn_2 to make a new dataframe. This will yield a 54 observation long dataframe.
 
-sn_3 = pd.merge(sn_1, sn_2, on = "Segmented_Neutrophils", how = "inner")
+sn_3 = pd.merge(sn_1, sn_2, on = "Segmented_Neutrophils", how = "left")
+
 sn_3 = sn_3.drop_duplicates()
 print(sn_3.info)
 
