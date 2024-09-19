@@ -52,4 +52,10 @@ line_fitter = LinearRegression()
 
 line_fitter.fit(sn, wbc)
 
+# the line fitter model will not work because there missing data, therefore, I will need to clean the data.
+# cleaning the data
+print(ped_append.dtypes)
+print(ped_append["Segmented_Neutrophils"].isna().sum())
+print(ped_append.count())
+# 54 
 
