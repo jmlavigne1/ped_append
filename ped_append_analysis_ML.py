@@ -89,12 +89,12 @@ print(sn_4.info)
 wbc_1 = sn_3["WBC_Count"]
 print(wbc_1.info)
 
-sn_4 = pd.array(sn_4["Segmented_Neutrophils"])
+sn_4 = pd.array(sn_4)
 sn_4 = sn_4.reshape(-1,1)
-wbc_1 = pd.array(wbc_1["WBC_Count"])
+wbc_1 = pd.array(wbc_1)
 wbc_1 = wbc_1.reshape(-1,1)
 
-
+print(sn_4, wbc_1)
 
 line_fitter.fit(sn_4, wbc_1)
 
