@@ -6,11 +6,13 @@ library(ggplot2)
 
 append <- read.csv('ped_append.csv', header=TRUE)
 View(append)
-
-#append <- na.omit(append)
-#nrow(append)
+nrow(append)
 wbc <- append%>%select(WBC_Count)
 View(wbc)
+
+#clean the data to remove the NA values for WBC count, RBC Count, and Neutrophil %
+
+
 
 #testing quantitatively for a linear relationship by computing the correlation coefficient. 
 
