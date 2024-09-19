@@ -59,4 +59,7 @@ print(ped_append["Segmented_Neutrophils"].isna().sum())
 print(ped_append.count())
 # 54 observations of segmented neutrophils recorded. 
 # 776 observations of WBC recorded. 
+# remove the missing data from the segmented neutrophil column to make a new dataframe
+
+
 
