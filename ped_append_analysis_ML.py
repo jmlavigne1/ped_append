@@ -99,7 +99,11 @@ print(sn_4, wbc_1)
 line_fitter.fit(sn_4, wbc_1)
 
 
-wbc_predict = [line_fitter.predict(sn_4)]
+wbc_1_predict = [line_fitter.predict(sn_4)]
+
+plt.plot(sn_4, wbc_1)
+plt.plot(sn_4, wbc_1_predict)
+plt.show()
 
 
 
