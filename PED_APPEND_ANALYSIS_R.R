@@ -54,8 +54,11 @@ test <- wbc_clean[!sample, ]
 
 model <- lm(Neutrophil_Percentage ~ WBC_Count, data=train)
 
-
-
+#quantify the model fit
+#calculating the Residual Standard Error (RSE)
+summary(model)
+sigma(model)
+#these are two modes of generating the RSE
 
 
 
