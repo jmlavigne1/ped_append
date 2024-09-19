@@ -66,4 +66,6 @@ sn_2 = ped_append.dropna(subset=['WBC_Count'])
 
 #take the subset of sn_1 and sn_2 to make a new dataframe. This will yield a 54 observation long dataframe.
 
+sn_3 = sn_1.merge(sn_2, on = "Segmented_Neutrophils", how = "left")
+print(sn_3.info)
 
