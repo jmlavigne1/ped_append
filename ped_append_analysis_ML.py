@@ -57,5 +57,6 @@ line_fitter.fit(sn, wbc)
 print(ped_append.dtypes)
 print(ped_append["Segmented_Neutrophils"].isna().sum())
 print(ped_append.count())
-# 54 
+# 54 observations of segmented neutrophils recorded. 
+# 776 observations of WBC recorded. 
 
