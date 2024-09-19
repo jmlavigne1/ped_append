@@ -61,6 +61,7 @@ print(ped_append.count())
 # 776 observations of WBC recorded. 
 # remove the missing data from the segmented neutrophil column to make a new dataframe
 
-sn_1 = sn.dropna(['Segmented_Neutrophils'])
-print(sn_1)
+sn_1 = ped_append.dropna(subset=['Segmented_Neutrophils'])
+sn_2 = ped_append.dropna(subset=['WBC_Count'])
+
 
