@@ -7,5 +7,5 @@
 
 
 # To-Do list for this project: 
-#1.) remove the nan values from the WBC, RBC, and Neutrophil Percentage columns
+#1.) remove the nan values from the WBC, RBC, and Neutrophil Percentage columns 19SEPT2024
 
