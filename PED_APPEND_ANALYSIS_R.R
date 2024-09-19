@@ -35,4 +35,26 @@ WBC_dist
 plot <- append%>%ggplot(aes(WBC_Count, WBC_Count)) + geom_boxplot()
 plot
 
+threshold = 32
+wbc_clean <- append%>%filter(WBC_Count < threshold)
+
+plot_2 <- wbc_clean%>%ggplot(aes(WBC_Count,WBC_Count)) + geom_boxplot() +ggtitle("WBC Count Boxplot")
+plot_2
+
+
+##building a simple linear model
+#splitting the data 60/40
+
+sample <-sample(c(TRUE, FALSE), nrow(wbc_clean),replace =T, prob= c(0.6, 0.4))
+#subset data points into train and test set
+train <- wbc_clean[sample, ]
+test <- wbc_clean[!sample, ]
+
+
+
+
+
+
+
+
 
