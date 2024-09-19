@@ -21,3 +21,8 @@ print(regensburg_pediatric_appendicitis.metadata)
 print(regensburg_pediatric_appendicitis.variables) 
 
 
+ped_append = X
+print(ped_append)
+
+#prepare EDA
+
