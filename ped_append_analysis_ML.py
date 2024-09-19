@@ -31,3 +31,25 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#sns.pairplot(ped_append)
+#plt.show()
+#plt.clf()
+
+# 
+plt.scatter(ped_append["Segmented_Neutrophils"], ped_append["WBC_Count"])
+plt.show()
+
+sn = pd.array(ped_append["Segmented_Neutrophils"])
+sn = sn.reshape(-1,1)
+wbc = pd.array(ped_append["WBC_Count"])
+wbc = wbc.reshape(-1,1)
+
+# produce a simple linear regression model for ML prediction
+
+from sklearn.linear_model import LinearRegression
+
+line_fitter = LinearRegression()
+
+line_fitter.fit(sn, wbc)
+
+
