@@ -50,7 +50,7 @@ from sklearn.linear_model import LinearRegression
 
 line_fitter = LinearRegression()
 
-line_fitter.fit(sn, wbc)
+#line_fitter.fit(sn, wbc)
 
 # the line fitter model will not work with the previously assigned arrays sn and wbc because there missing data, therefore, I will need to clean the data.
 # cleaning the data
