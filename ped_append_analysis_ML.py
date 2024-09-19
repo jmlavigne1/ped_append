@@ -72,5 +72,13 @@ print(sn_3)
 sn_3 = sn_3.drop_duplicates()
 print(sn_3.info)
 
+frames = [sn_1, sn_2]
+
+sn_3 = pd.concat(frames)
+print(sn_3.info)
 #I should only have 53 columns total
+
+sn_3 = sn_3.dropna(subset=["Segmented_Neutrophils"]).drop_duplicates()
+print(sn_3.info)
+
 
