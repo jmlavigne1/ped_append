@@ -7,7 +7,8 @@ library(ggplot2)
 append <- read.csv('ped_append.csv', header=TRUE)
 View(append)
 
-
+#append <- na.omit(append)
+#nrow(append)
 wbc <- append%>%select(WBC_Count)
 View(wbc)
 
@@ -76,5 +77,14 @@ r_sq_2
 r_sq <- summary(model)$r.squared
 r_sq
 
+##checking model residuals
+
+train$estimate <- predict(model)
+train$residuals <- residuals(model)
+
+length(resid(lm(Neutrophil_Percentage ~ RBC_Count, test)))
+
+length(resid(lm(Neutrophil_Percentage ~ WBC_Count, test)))
+nrow(test)
 
 
