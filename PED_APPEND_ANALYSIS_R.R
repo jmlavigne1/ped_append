@@ -23,6 +23,11 @@ np <- append%>%select(Neutrophil_Percentage)
 nrow(np)
 np <- na.omit(np)
 nrow(np)
+ 
+# the np sub dataframe is 776 - 679 rows smaller than the wbc sub dataframe, so I will join these two dataframes. 
+
+
+
 
 #testing quantitatively for a linear relationship by computing the correlation coefficient. 
 
