@@ -11,8 +11,18 @@ wbc <- append%>%select(WBC_Count)
 View(wbc)
 
 #clean the data to remove the NA values for WBC count, RBC Count, and Neutrophil %
+wbc <- na.omit(wbc)
+nrow(wbc)
 
+rbc <- append%>%select(RBC_Count)
+nrow(rbc)
+rbc <- na.omit(rbc)
+nrow(rbc)
 
+np <- append%>%select(Neutrophil_Percentage)
+nrow(np)
+np <- na.omit(np)
+nrow(np)
 
 #testing quantitatively for a linear relationship by computing the correlation coefficient. 
 
