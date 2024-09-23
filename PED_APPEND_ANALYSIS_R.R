@@ -12,6 +12,7 @@ View(wbc)
 
 #clean the data to remove the NA values for WBC count, RBC Count, and Neutrophil %
 wbc <- na.omit(wbc)
+View(wbc)
 nrow(wbc)
 
 rbc <- append%>%select(RBC_Count)
@@ -24,10 +25,13 @@ nrow(np)
 np <- na.omit(np)
 nrow(np)
  
-# the np sub dataframe is 776 - 679 rows smaller than the wbc sub dataframe, so I will join these two dataframes. 
+# the np sub dataframe is 776 - 679 rows smaller than the wbc sub dataframe, so I will join the three dataframes. 
 
+np_wbc <- merge(np, wbc)
 
-
+merged <- merge(np_wbc, rbc)
+View(merged)
+nrow(merged)
 
 #testing quantitatively for a linear relationship by computing the correlation coefficient. 
 
@@ -36,7 +40,7 @@ coeff_1$estimate
 
 #this demonstrates that there is a very low correlation, and therefore a weak linear relationship between these two variables.
 
-coeff_2 <- cor.test(append$WBC_Count, append$Neutrophil_Percentage)
+coeff_2 <- cor.test(merged$wbc, merged$np)
 coeff_2$estimate
 
 #the value 0.6634112 demonstrates a greater linear linear relationship than is demonstrated in coeff_1. 
@@ -105,3 +109,5 @@ length(resid(lm(Neutrophil_Percentage ~ WBC_Count, test)))
 nrow(test)
 
 
+
+# build a multiple linear model
