@@ -30,7 +30,7 @@ nrow(np)
 np_wbc <- merge(np, wbc)
 
 merged <- merge(np_wbc, rbc)
-View(merged)
+print(merged)
 nrow(merged)
 
 #testing quantitatively for a linear relationship by computing the correlation coefficient. 
