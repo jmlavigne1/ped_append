@@ -74,7 +74,7 @@ sigma(model)
 
 #calculating the r^2 statistic represents the proportion of variance explained. 
 summary(model)$r.squared
-#our r^2 value is 0.4780326.This suggests taht we have 46% variability in the total wbc count value.
+#our r^2 value is 0.4780326.This suggests that we have 47 - 48% variability in the total wbc count value.
 
 
 #to quantify in comparison the model fit to other models, I will build a second model
