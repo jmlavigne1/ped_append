@@ -92,15 +92,32 @@ r_sq
 train$estimate <- predict(model)
 train$residuals <- residuals(model)
 
+
 length(resid(lm(Neutrophil_Percentage ~ RBC_Count, test)))
 
 length(resid(lm(Neutrophil_Percentage ~ WBC_Count, test)))
 nrow(test)
 
+summary(model)
+
+summary(model_2)
+#visualize the fit
+
+ggplot(train, aes(Neutrophil_Percentage, WBC_Count)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  geom_smooth(se = FALSE, color = "red") 
+
+ggplot(train, aes(Neutrophil_Percentage, RBC_Count)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  geom_smooth(se = FALSE, color = "red") 
 
 
 # build a multiple linear model
 
+model_3 <-  lm(Neutrophil_Percentage ~ RBC_Count + WBC_Count, data=train)
+model_3
 
 
-
+summary(model_3)
