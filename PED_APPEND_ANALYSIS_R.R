@@ -1,49 +1,38 @@
-library(readr)
-library(dplyr)
+gc()
+
 library(tidyverse)
-library(ggplot2)
-
-
 append <- read.csv('ped_append.csv', header=TRUE)
+append <- tibble::rowid_to_column(append, "ID")
 View(append)
-nrow(append)
-wbc <- append%>%select(WBC_Count)
-View(wbc)
 
-#clean the data to remove the NA values for WBC count, RBC Count, and Neutrophil %
+#clean the data
+wbc <- append%>%select(WBC_Count, ID)
 wbc <- na.omit(wbc)
-View(wbc)
-nrow(wbc)
-
-rbc <- append%>%select(RBC_Count)
-nrow(rbc)
+rbc <- append%>%select(RBC_Count, ID)
 rbc <- na.omit(rbc)
-nrow(rbc)
-
-np <- append%>%select(Neutrophil_Percentage)
-nrow(np)
+np <- append%>%select(Neutrophil_Percentage, ID)
 np <- na.omit(np)
-nrow(np)
- 
-# the np sub dataframe is 776 - 679 rows smaller than the wbc sub dataframe, so I will join the three dataframes. 
 
-np_wbc <- merge(np, wbc)
-
-merged <- merge(np_wbc, rbc)
-print(merged)
-nrow(merged)
+wbc_np <- left_join(np, wbc)
+View(wbc_np)
+whole <- inner_join(wbc_np, rbc)
 
 #testing quantitatively for a linear relationship by computing the correlation coefficient. 
 
 coeff_1 <- cor.test(append$WBC_Count, append$Age)
-coeff_1$estimate
+print(coeff_1$estimate)
 
 #this demonstrates that there is a very low correlation, and therefore a weak linear relationship between these two variables.
 
-coeff_2 <- cor.test(merged$wbc, merged$np)
+coeff_2 <- cor.test(whole$Neutrophil_Percentage, whole$WBC_Count)
 coeff_2$estimate
 
 #the value 0.6634112 demonstrates a greater linear linear relationship than is demonstrated in coeff_1. 
+
+coeff_3 <- cor.test(whole$Neutrophil_Percentage, whole$RBC_Count)
+coeff_3$estimate
+
+#coeff_3 returns a value of the 0.006627787 that indicates that there is a low correlation.
 
 str(append)
 
@@ -54,11 +43,11 @@ WBC_dist
 
 #check for outliers in the WBC distribution
 
-plot <- append%>%ggplot(aes(WBC_Count, WBC_Count)) + geom_boxplot()
+plot <- whole%>%ggplot(aes(WBC_Count, WBC_Count)) + geom_boxplot()
 plot
 
 threshold = 32
-wbc_clean <- append%>%filter(WBC_Count < threshold)
+wbc_clean <- whole%>%filter(WBC_Count < threshold)
 
 plot_2 <- wbc_clean%>%ggplot(aes(WBC_Count,WBC_Count)) + geom_boxplot() +ggtitle("WBC Count Boxplot")
 plot_2
@@ -85,7 +74,7 @@ sigma(model)
 
 #calculating the r^2 statistic represents the proportion of variance explained. 
 summary(model)$r.squared
-#our r^2 value is 0.4626656.This suggests taht we have 46% variability in the total wbc count value.
+#our r^2 value is 0.4780326.This suggests taht we have 46% variability in the total wbc count value.
 
 
 #to quantify in comparison the model fit to other models, I will build a second model
@@ -107,7 +96,5 @@ length(resid(lm(Neutrophil_Percentage ~ RBC_Count, test)))
 
 length(resid(lm(Neutrophil_Percentage ~ WBC_Count, test)))
 nrow(test)
-
-
 
 # build a multiple linear model
