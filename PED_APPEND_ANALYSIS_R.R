@@ -97,4 +97,10 @@ length(resid(lm(Neutrophil_Percentage ~ RBC_Count, test)))
 length(resid(lm(Neutrophil_Percentage ~ WBC_Count, test)))
 nrow(test)
 
+
+
 # build a multiple linear model
+
+
+
+
