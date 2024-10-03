@@ -22,6 +22,8 @@ print(regensburg_pediatric_appendicitis.variables)
 
 
 ped_append = X
+
+X.to_csv('ped_append.csv', index=False)
 print(ped_append)
 
 #prepare EDA
@@ -34,6 +36,13 @@ import matplotlib.pyplot as plt
 #sns.pairplot(ped_append)
 #plt.show()
 #plt.clf()
+
+for col in ["Segmented_Neutrophils", "WBC_Count"]:
+    header_line = "-"*25
+    print(f"{header_line} Summary for {col}{header_line}")
+    print()
+    print(ped_append[col].describe())
+    print()
 
 # 
 plt.scatter(ped_append["Segmented_Neutrophils"], ped_append["WBC_Count"])
